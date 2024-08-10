@@ -1,0 +1,45 @@
+index = ['active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke']
+
+card0 = df[index][df.cardio == 0]
+card1 = df[index][df.cardio == 1]
+
+card0_cero = list(card0[card0[index]==0].count())
+card0_uno = list(card0[card0[index]==1].count())
+
+card1_cero = list(card1[card1[index]==0].count())
+card1_uno = list(card1[card1[index]==1].count())
+
+card0_cero, card0_uno, card1_cero, card1_uno
+
+n = len(index)
+x = np.arange(n)
+width = 0.3
+
+plt.figure(figsize=(20, 6))
+
+plt.subplot(131)
+plt.bar(x - width/2, card0_cero, width=width, label= 0)
+plt.bar(x + width/2, card0_uno, width=width, label= 1)
+plt.xticks(x, index)
+plt.title('cardio = 0')
+
+plt.subplot(132)
+plt.bar(x - width/2, card1_cero, width=width, label= 0)
+plt.bar(x + width/2, card1_uno, width=width, label= 1)
+plt.xticks(x, index)
+plt.title('cardio = 1')
+
+
+// OTRA FORMA
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
+# Crear el gráfico
+sns.barplot(data=df_cardio0, x='variable', hue='value', y='total', ax=ax1, legend=None)
+ax1.set_title =('cardio = 0')
+sns.barplot(data=df_cardio1, x='variable', hue='value', y='total', ax=ax2)
+ax2.set_title =('cardio = 1')
+
+plt.tight_layout()
+plt.show()
+
+
+plt.show()
